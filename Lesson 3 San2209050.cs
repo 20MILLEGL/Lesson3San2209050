@@ -1,9 +1,10 @@
 ﻿
 using System;
 
-namespace Lesson 3 // Added a namespace to avoid conflict
-{
-    static ConsoleApp3 void Main()
+namespace Lesson3  // Changed the namespace to avoid conflict with existing namespaces
+{ // Added a namespace to avoid conflict
+
+        static  ConsoleApp  Main()
     {
         Console.WriteLine("Welcome to the Integer Calculator!");
 
