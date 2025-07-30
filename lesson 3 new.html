@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="Santana White">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Integer Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      padding: 20px;
+      max-width: 500px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+    }
+    .calculator {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px #ccc;
+    }
+    input, select, button {
+      display: block;
+      margin: 10px 0;
+      padding: 10px;
+      font-size: 16px;
+      width: 100%;
+    }
+    #result {
+      margin-top: 15px;
+      font-weight: bold;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Integer Calculator</h1>
+
+  <div class="calculator">
+    <label for="num1">Enter first integer:</label>
+    <input type="number" id="num1" required>
+
+    <label for="num2">Enter second integer:</label>
+    <input type="number" id="num2" required>
+
+    <label for="operation">Choose operation:</label>
+    <select id="operation">
+      <option value="add">Add</option>
+      <option value="subtract">Subtract</option>
+      <option value="multiply">Multiply</option>
+      <option value="divide">Divide</option>
+    </select>
+
+    <button onclick="calculate()">Calculate</button>
+
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function calculate() {
+      const num1 = parseInt(document.getElementById("num1").value);
+      const num2 = parseInt(document.getElementById("num2").value);
+      const operation = document.getElementById("operation").value;
+      const resultBox = document.getElementById("result");
+
+      if (isNaN(num1) || isNaN(num2)) {
+        resultBox.textContent = "Please enter valid integers.";
+        resultBox.style.color = "red";
+        return;
+      }
+
+      let result;
+
+      switch (operation) {
+        case "add":
+          result = num1 + num2;
+          resultBox.textContent = `${num1} + ${num2} = ${result}`;
+          break;
+        case "subtract":
+          result = num1 - num2;
+          resultBox.textContent = `${num1} - ${num2} = ${result}`;
+          break;
+        case "multiply":
+          result = num1 * num2;
+          resultBox.textContent = `${num1} × ${num2} = ${result}`;
+          break;
+        case "divide":
+          if (num2 === 0) {
+            resultBox.textContent = "Error: Division by zero is not allowed.";
+            resultBox.style.color = "red";
+            return;
+          }
+          result = num1 / num2;
+          resultBox.textContent = `${num1} ÷ ${num2} = ${result}`;
+          break;
+        default:
+          resultBox.textContent = "Invalid operation.";
+      }
+
+      resultBox.style.color = "green";
+    }
+  </script>
+
+</body>
+</html>
